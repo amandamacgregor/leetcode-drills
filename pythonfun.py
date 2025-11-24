@@ -46,10 +46,18 @@ https://leetcode.com/problem-list/r0icsowg/
 # +------------+--------------+--------------+
 # Explanation: Bob and George both have a condition that starts with DIAB1.
 
+# import pandas as pd
+
+# def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
+#     patients_with_diabetes = patients[patients['conditions'].str.contains(r'\bDIAB1')]
+#     result_df = patients_with_diabetes[['patient_id', 'patient_name', 'conditions']]
+#     return result_df
+
+# above missed one of the test cases - adjusting the contains method:
 import pandas as pd
 
 def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
-    patients_with_diabetes = patients[patients['conditions'].str.contains(r'\bDIAB1')]
+    patients_with_diabetes = patients[patients['conditions'].str.contains('^DIAB1|\sDIAB1')]
     result_df = patients_with_diabetes[['patient_id', 'patient_name', 'conditions']]
     return result_df
 
